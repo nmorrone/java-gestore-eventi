@@ -24,13 +24,13 @@ public class Evento {
 
 			// lancio eccezione
 			else if (d.isBefore(LocalDate.now())){
-				System.err.println("Errore inserimento evento!");
-				throw new IllegalStateException("è stata inserita una data già passata");
+
+				throw new IllegalStateException("Errore inserimento evento! È stata inserita una data già passata.\n");
 			}
 			
 			else {
-				System.err.println("Errore inserimento evento");
-				throw new IllegalStateException("Impossibile creare un Evento, i posti devono essere > di 0");
+				
+				throw new IllegalStateException("Errore inserimento evento!, il numero dei posti deve essere > 0.\n");
 			}
 		} catch (Exception e) {
 			throw e;
@@ -130,7 +130,7 @@ public class Evento {
 	//metodo stamp info evento completa
 	// stampa tutti i dettagli
 	public String infoEvento() {
-		return String.format("Evento :%s\nTitolo :%s\nPosti Disponibili :%s\nPosti Prenotati :%s", getTitolo(),
+		return String.format("Evento: %s\nData Evento: %s\nPosti Disponibili: %s\nPosti Prenotati: %s", getTitolo(),
 				getDataFormattata(), getPostiDisponibili(), getPostiPrenotati());
 	}
 
