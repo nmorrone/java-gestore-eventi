@@ -20,7 +20,7 @@ public class Concerto extends Evento{
 	
 	//Apro metodi getter e setter per data/orario e prezzo
 	public String getPrezzo() {
-		return String.format("%,2f", this.prezzo);
+		return String.format("%.2f", this.prezzo);
 	}
 	
 	protected void setPrezzo(double c) {
@@ -41,7 +41,7 @@ public class Concerto extends Evento{
 	//metodo toString overridato
 	@Override
 	public String toString() {
-		return String.format("Concerto: %s\nData e Orario : %s\nPrezzo €%d", getTitolo(), getOraDataFormattata(), getPrezzo());
+		return String.format("Concerto: %s\nData e Orario : %s\nPrezzo €%s", getTitolo(), getOraDataFormattata(), getPrezzo());
 		
 	}
 	
@@ -52,6 +52,13 @@ public class Concerto extends Evento{
 				getOraDataFormattata(), getPrezzo(), getPostiDisponibili(), getPostiPrenotati());
 	}
 	
+	
+	public static void main(String[]args) {
+		
+		Concerto concerto1 = new Concerto("titolo3", LocalDate.of(2024, 11, 30),LocalTime.of(18, 00), 50, 49.50);
+		
+		System.out.print(concerto1.toString());
+	}
 	
 	
 }

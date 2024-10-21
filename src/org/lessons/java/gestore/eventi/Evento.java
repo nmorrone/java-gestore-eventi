@@ -89,15 +89,18 @@ public class Evento {
 
 		return this.postiPrenotati;
 	}
-
+	
+	
+	public void setTitolo(String a) {
+		this.titolo = a;
+	}
 	public String getTitolo() {
 		return this.titolo;
 	}
 
-	public void setTitolo(String a) {
-		this.titolo = a;
+	public void setData(LocalDate d) {
+		this.data = d;
 	}
-
 	public LocalDate getData() {
 		return this.data;
 	}
@@ -108,9 +111,6 @@ public class Evento {
 		return dataFormattata;
 	}
 
-	public void setData(LocalDate d) {
-		this.data = d;
-	}
 
 	// metodo toString overridato
 	@Override
