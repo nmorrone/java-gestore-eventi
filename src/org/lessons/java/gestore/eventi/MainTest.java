@@ -48,34 +48,38 @@ public class MainTest {
 				for (int i = 0; i < numeroPrenotazioni; i++) {
 					nuovoEvento.prenota();
 				}
-				System.out.println("Prenotazioni Effettuate!\nPosti diponibili rimasti: " + nuovoEvento.getPostiDisponibili() + "\nPosti prenotati: " + nuovoEvento.getPostiPrenotati());
+				System.out.println("Prenotazioni Effettuate!\nPosti diponibili rimasti: "
+						+ nuovoEvento.getPostiDisponibili() + "\nPosti prenotati: " + nuovoEvento.getPostiPrenotati());
 
 			} else {
-				//System.out.println("Non hai voluto effettuare prenotazioni\nEcco le info sul tuo Evento:\n" + nuovoEvento.infoEvento());
+				// System.out.println("Non hai voluto effettuare prenotazioni\nEcco le info sul
+				// tuo Evento:\n" + nuovoEvento.infoEvento());
 			}
 
 		} else {
 			System.out.println("Mi dispiace, ma non risulta presente nessun evento");
 		}
-		
+
 		if (nuovoEvento.getPostiPrenotati() > 0) {
 			System.out.println("Vuoi effettuare delle disdette?\n digita il numero per scegliere\n1) Si!\n2) No!");
 			int scelta2 = scan.nextInt();
-			switch(scelta2) {
+			switch (scelta2) {
 			case 1:
 				System.out.println("Inserisci il numero di disdette che vuoi effettuare");
 				int numeroDisdette = scan.nextInt();
 				for (int i = 0; i < numeroDisdette; i++) {
-					nuovoEvento.disdici()
-;				}
-				System.out.println("Disdette Effettuate!\nPosti diponibili rimasti: " + nuovoEvento.getPostiDisponibili() + "\nPosti prenotati: " + nuovoEvento.getPostiPrenotati());
+					nuovoEvento.disdici();
+				}
+				System.out.println("Disdette Effettuate!\nPosti diponibili rimasti: "
+						+ nuovoEvento.getPostiDisponibili() + "\nPosti prenotati: " + nuovoEvento.getPostiPrenotati());
 				break;
 			case 2:
-				System.out.println("Non hai voluto effettuare disdette.\nEcco le info sul tuo Evento:\n" + nuovoEvento.infoEvento());
+				System.out.println("Non hai voluto effettuare disdette.\nEcco le info sul tuo Evento:\n"
+						+ nuovoEvento.infoEvento());
 			}
-			
+
 		}
-		
+
 		else {
 			System.out.println("Ecco le info sul tuo Evento:\n" + nuovoEvento.infoEvento());
 		}
