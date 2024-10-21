@@ -124,27 +124,4 @@ public class Evento {
 				getDataFormattata(), getPostiDisponibili(), getPostiPrenotati());
 	}
 
-	public static void main(String[] args) {
-
-		/*Evento evento1 = new Evento("titolo", LocalDate.of(2024, 5, 5), 30);
-		evento1.prenota();
-		evento1.prenota();
-
-		System.out.println(evento1.getData());
-
-		System.out.println(evento1.toString());
-
-		evento1.infoEvento(); 
-
-		Evento controlloData = new Evento("Titolo di Prova", LocalDate.of(2024, 10, 25), 30);
-
-		controlloData.prenota();
-		
-		System.out.println(controlloData.toString());
-		
-		
-		Evento controlloPosti = new Evento("Titolo di Prova 2", LocalDate.of(2024, 10, 30), 0); */
-	
-	}
-
 }
