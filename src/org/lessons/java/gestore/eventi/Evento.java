@@ -13,8 +13,6 @@ public class Evento {
 
 	// costruttore con parametri
 	Evento(String t, LocalDate d, int p) {
-
-		try {
 			if ((d == LocalDate.now() || d.isAfter(LocalDate.now())) && (p > 0)) {
 				this.titolo = t;
 				this.data = d;
@@ -32,23 +30,17 @@ public class Evento {
 				
 				throw new IllegalStateException("Errore inserimento evento!, il numero dei posti deve essere > 0.\n");
 			}
-		} catch (Exception e) {
-			throw e;
 		}
-	}
 
 	// Metodo per prenotazione posti con controllo data e posti
 	public void prenota() {
 
-		int tentativoPrenotazione = postiPrenotati + 1;
-
 		if ((this.data == LocalDate.now() || this.data.isAfter(LocalDate.now()))
-				&& (tentativoPrenotazione <= postiDisponibili)) {
-
-			this.postiPrenotati = tentativoPrenotazione;
-			this.postiDisponibili = postiDisponibili - postiPrenotati;
-			System.out.println("Prenotazione effettuata \nPosti Prenotati :" + getPostiPrenotati()
-					+ "\nPosti Ancora Dispomibili; " + getPostiDisponibili());
+				&& (postiPrenotati <= postiDisponibili)) {
+			this.postiPrenotati = postiPrenotati + 1;
+			this.postiDisponibili = postiDisponibili - 1;
+			/*System.out.println("Prenotazione effettuata \nPosti Prenotati :" + getPostiPrenotati()
+					+ "\nPosti Ancora Dispomibili; " + getPostiDisponibili());*/
 		}
 
 		else if (this.data.isBefore(LocalDate.now())) {
@@ -67,14 +59,12 @@ public class Evento {
 	// Metodo per disdetta posti con controllo data e posti
 	public void disdici() {
 
-		int tentativoDisdetta = postiPrenotati - 1;
+		if ((this.data == LocalDate.now() || this.data.isAfter(LocalDate.now())) && (postiPrenotati > 0)) {
 
-		if ((this.data == LocalDate.now() || this.data.isAfter(LocalDate.now())) && (tentativoDisdetta >= 0)) {
-
-			this.postiPrenotati = tentativoDisdetta;
-			this.postiDisponibili = postiDisponibili - postiPrenotati;
-			System.out.println("Disdetta effettuata \nPosti Prenotati :" + getPostiPrenotati()
-					+ "\nPosti Ancora Dispomibili; " + getPostiDisponibili());
+			this.postiPrenotati = postiPrenotati -1;
+			this.postiDisponibili = postiDisponibili +1;
+			/*System.out.println("Disdetta effettuata \nPosti Prenotati :" + getPostiPrenotati()
+					+ "\nPosti Ancora Dispomibili; " + getPostiDisponibili());*/
 		}
 
 		else if (this.data.isBefore(LocalDate.now())) {
