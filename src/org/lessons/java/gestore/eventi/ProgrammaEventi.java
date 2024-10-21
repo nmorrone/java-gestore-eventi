@@ -21,11 +21,11 @@ public class ProgrammaEventi {
 	}
 
 //metodo selezione eventi su data selezionata e creazione nuova lista con gli stessi
-	public List<Evento> eventiDataSelezionata(LocalDate d) {
-		List<Evento> eventiInData = new ArrayList<>();
+	public void eventiDataSelezionata(LocalDate d) {
+		List <Evento> eventiInData = new ArrayList<>();
 		Evento eventoControllo;
 		for (int i = 0; i < eventi.size(); i++) {
-			if (d == eventi.get(i).getData()) {
+			if (d == (eventi.get(i)).getData()) {
 				eventoControllo = eventi.get(i);
 				eventiInData.add(eventoControllo);
 
@@ -33,7 +33,12 @@ public class ProgrammaEventi {
 
 			}
 		}
-		return eventiInData;
+		
+		//return eventiInData;
+		for (int i = 0; i <eventiInData.size(); i++) {
+			System.out.println(eventiInData.get(i));
+		}
+
 	}
 
 //metodo restituzione quantità eventi in lista
@@ -65,7 +70,7 @@ public class ProgrammaEventi {
 		System.out.println(programma1.eventi.get(1));
 		System.out.println(programma1.eventi.get(2));
 
-		System.out.println(programma1.eventiDataSelezionata(LocalDate.of(2024, 10, 30)));
+		programma1.eventiDataSelezionata(LocalDate.of(2024, 10, 30));
 
 		System.out.println(programma1.numeroEventiInLista());
 
@@ -73,6 +78,10 @@ public class ProgrammaEventi {
 		programma2.aggiungiEvento(evento1);
 		programma2.aggiungiEvento(evento2);
 		programma2.aggiungiEvento(concerto1);
+		
+		for (int i = 0; i < programma2.eventi.size(); i++) {
+			System.out.println(programma2.eventi.get(i));
+		}
 
 		programma2.svuotaListaEventi();
 		System.out.println(programma2.eventi.size());
