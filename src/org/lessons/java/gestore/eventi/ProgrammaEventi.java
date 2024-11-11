@@ -3,6 +3,8 @@ package org.lessons.java.gestore.eventi;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProgrammaEventi {
@@ -47,9 +49,24 @@ public class ProgrammaEventi {
 
 //metodo che svuota lista eventi
 	public void svuotaListaEventi() {
-		for (int i = 0; i < eventi.size(); i++) {
-			eventi.remove(i);
+			eventi.removeAll(eventi);
+		
+	}
+	
+	
+//metodo ordinamento eventi del programma per data
+	
+	public String listaEventiOrdinata() {
+		
+		Collections.sort(eventi, Comparator.comparing(Evento :: getData));
+		
+		StringBuilder stringaEventiOrdinata = new StringBuilder();
+		
+		for(Evento e : eventi) {
+			stringaEventiOrdinata.append(e.toString()).append("\n");
 		}
+		
+		return stringaEventiOrdinata.toString();
 	}
 
 	public static void main(String[] args) {
@@ -82,7 +99,9 @@ public class ProgrammaEventi {
 		}
 
 		programma2.svuotaListaEventi();
-		System.out.println(programma2.eventi.size());
+		System.out.println(programma2.eventi.isEmpty());
+		
+		System.out.println(programma1.listaEventiOrdinata());
 
 	}
 }

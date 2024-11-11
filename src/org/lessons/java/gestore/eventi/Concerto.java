@@ -17,17 +17,24 @@ public class Concerto extends Evento {
 
 	}
 
-	// Apro metodi getter e setter per data/orario e prezzo
-	public String getPrezzo() {
-		return String.format("%.2f", this.prezzo);
+	//getters and setters
+	public double getPrezzo() {
+		return this.prezzo;
 	}
-
 	protected void setPrezzo(double c) {
 		this.prezzo = c;
 	}
 
 	protected void setDataOra(LocalDate d, LocalTime h) {
 		this.dataOrario = LocalDateTime.of(d, h);
+	}
+	public LocalDateTime getDataOra() {
+		return this.dataOrario;
+	}
+	
+	//metodo prezzo formattato
+	public String getPrezzoFormattato() {
+		return String.format("%.2f", this.prezzo);
 	}
 
 	// metodo data e ora formattata con formattatore
@@ -41,17 +48,18 @@ public class Concerto extends Evento {
 	@Override
 	public String toString() {
 		return String.format("Concerto: %s\nData e Orario : %s\nPrezzo €%s", getTitolo(), getOraDataFormattata(),
-				getPrezzo());
+				getPrezzoFormattato());
 
 	}
 
 	// metodo per stampa tutti dettagli Concerto
-	@Override
 	public String infoEvento() {
 		return String.format("Concerto: %s\nData e Orario: %s\nPrezzo: %s\nPosti Disponibili: %s\nPosti Prenotati: %s",
-				getTitolo(), getOraDataFormattata(), getPrezzo(), getPostiDisponibili(), getPostiPrenotati());
+				getTitolo(), getOraDataFormattata(), getPrezzoFormattato(), getPostiDisponibili(), getPostiPrenotati());
 	}
 
+	
+	//test funzionalità
 	public static void main(String[] args) {
 
 		Concerto concerto1 = new Concerto("titolo3", LocalDate.of(2024, 11, 30), LocalTime.of(18, 00), 50, 49.50);
