@@ -42,19 +42,30 @@ public class MainTest {
 		if (nuovoEvento != null) {
 			System.out.println("Vuoi effettuare prenotazioni?\n digita il numero per scegliere\n1) Si!\n2) No!");
 			int scelta = scan.nextInt();
+			
 			if (scelta == 1 && nuovoEvento.getPostiPrenotati() < nuovoEvento.getPostiDisponibili()) {
 				System.out.println("Inserisci il numero di prenotazioni che vuoi effettuare");
 				int numeroPrenotazioni = scan.nextInt();
-				for (int i = 0; i < numeroPrenotazioni; i++) {
+				if(numeroPrenotazioni <= nuovoEvento.getPostiDisponibili()) {
+					for (int i = 0; i < numeroPrenotazioni; i++) {
 					nuovoEvento.prenota();
+					}
+					System.out.println("Prenotazioni Effettuate!\nPosti diponibili rimasti: "
+					+ nuovoEvento.getPostiDisponibili() + "\nPosti prenotati: " + nuovoEvento.getPostiPrenotati());
 				}
-				System.out.println("Prenotazioni Effettuate!\nPosti diponibili rimasti: "
-						+ nuovoEvento.getPostiDisponibili() + "\nPosti prenotati: " + nuovoEvento.getPostiPrenotati());
-
-			} else {
-				// System.out.println("Non hai voluto effettuare prenotazioni\nEcco le info sul
-				// tuo Evento:\n" + nuovoEvento.infoEvento());
+				
+				else if (numeroPrenotazioni > nuovoEvento.getPostiDisponibili()) {
+					
+					System.out.println("Mi dispiace ma il numero di prenotazioni richiesto supera la disponibilità dell'evento!");
+				}
+				
+				
+			} 
+			else if(scelta == 2){
+				
+				System.out.println("Ecco le info sul tuo Evento:\n" + nuovoEvento.infoEvento());
 			}
+			
 
 		} else {
 			System.out.println("Mi dispiace, ma non risulta presente nessun evento");
@@ -76,14 +87,13 @@ public class MainTest {
 			case 2:
 				System.out.println("Non hai voluto effettuare disdette.\nEcco le info sul tuo Evento:\n"
 						+ nuovoEvento.infoEvento());
+				break;
 			}
 
 		}
 
-		else {
-			System.out.println("Ecco le info sul tuo Evento:\n" + nuovoEvento.infoEvento());
-		}
-
 	}
+	
+
 
 }

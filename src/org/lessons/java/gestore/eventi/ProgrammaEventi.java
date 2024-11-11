@@ -21,23 +21,21 @@ public class ProgrammaEventi {
 	}
 
 //metodo selezione eventi su data selezionata e creazione nuova lista con gli stessi
-	public void eventiDataSelezionata(LocalDate d) {
+	public List <Evento> eventiDataSelezionata(LocalDate d) {
 		List <Evento> eventiInData = new ArrayList<>();
 		Evento eventoControllo;
 		for (int i = 0; i < eventi.size(); i++) {
-			if (d == (eventi.get(i)).getData()) {
+			if (eventi.get(i).getData().equals(d)) {
 				eventoControllo = eventi.get(i);
 				eventiInData.add(eventoControllo);
 
 			} else {
-
+				
 			}
 		}
 		
-		//return eventiInData;
-		for (int i = 0; i <eventiInData.size(); i++) {
-			System.out.println(eventiInData.get(i));
-		}
+		return eventiInData;
+		
 
 	}
 
@@ -56,9 +54,9 @@ public class ProgrammaEventi {
 
 	public static void main(String[] args) {
 
-		Evento evento1 = new Evento("titolo1", LocalDate.of(2024, 10, 30), 40);
-		Evento evento2 = new Evento("titolo2", LocalDate.of(2024, 10, 31), 30);
-		Concerto concerto1 = new Concerto("titolo3", LocalDate.of(2024, 11, 30), LocalTime.of(18, 00), 50, 49.50);
+		Evento evento1 = new Evento("titolo1", LocalDate.of(2024, 11, 30), 40);
+		Evento evento2 = new Evento("titolo2", LocalDate.of(2024, 12, 31), 30);
+		Concerto concerto1 = new Concerto("titolo3", LocalDate.of(2024, 11, 25), LocalTime.of(18, 00), 50, 49.50);
 
 		ProgrammaEventi programma1 = new ProgrammaEventi("Programma 1");
 
@@ -70,11 +68,11 @@ public class ProgrammaEventi {
 		System.out.println(programma1.eventi.get(1));
 		System.out.println(programma1.eventi.get(2));
 
-		programma1.eventiDataSelezionata(LocalDate.of(2024, 10, 30));
+		System.out.println(programma1.eventiDataSelezionata(LocalDate.of(2024, 12, 31)));
 
 		System.out.println(programma1.numeroEventiInLista());
 
-		ProgrammaEventi programma2 = new ProgrammaEventi("Programma 1");
+		ProgrammaEventi programma2 = new ProgrammaEventi("Programma 2");
 		programma2.aggiungiEvento(evento1);
 		programma2.aggiungiEvento(evento2);
 		programma2.aggiungiEvento(concerto1);

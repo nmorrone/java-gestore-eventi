@@ -32,18 +32,12 @@ public class Evento {
 		}
 	}
 
-	// Metodo per prenotazione posti con controllo data e posti
+	//Metodo prenotati+1 con controllo data anteriore
 	public void prenota() {
 
-		if ((this.data == LocalDate.now() || this.data.isAfter(LocalDate.now()))
-				&& (postiPrenotati <= postiDisponibili)) {
+		if ((this.data == LocalDate.now() || this.data.isAfter(LocalDate.now()) && postiPrenotati < postiDisponibili)) {
 			this.postiPrenotati = postiPrenotati + 1;
 			this.postiDisponibili = postiDisponibili - 1;
-			/*
-			 * System.out.println("Prenotazione effettuata \nPosti Prenotati :" +
-			 * getPostiPrenotati() + "\nPosti Ancora Dispomibili; " +
-			 * getPostiDisponibili());
-			 */
 		}
 
 		else if (this.data.isBefore(LocalDate.now())) {
@@ -59,18 +53,13 @@ public class Evento {
 
 	}
 
-	// Metodo per disdetta posti con controllo data e posti
+	//Metodo disdetta-1 con controllo data anteriore
 	public void disdici() {
 
 		if ((this.data == LocalDate.now() || this.data.isAfter(LocalDate.now())) && (postiPrenotati > 0)) {
 
 			this.postiPrenotati = postiPrenotati - 1;
 			this.postiDisponibili = postiDisponibili + 1;
-			/*
-			 * System.out.println("Disdetta effettuata \nPosti Prenotati :" +
-			 * getPostiPrenotati() + "\nPosti Ancora Dispomibili; " +
-			 * getPostiDisponibili());
-			 */
 		}
 
 		else if (this.data.isBefore(LocalDate.now())) {
@@ -86,7 +75,7 @@ public class Evento {
 
 	}
 
-	// metodi setter e getter
+	//getters and setters
 	public int getPostiDisponibili() {
 		return this.postiDisponibili;
 	}
